@@ -153,7 +153,7 @@ module alu(
  	   // if station 0 (priority station) is not busy
              // set station 0 (array index 0) values, including operation, Busy, Qj, Qk, Vj, Vk
 	     // set Q to the 'valid' parameter when valid, otherwise set it to A or B
-             // set V to A or B if valid, otherwise do not set V (A->k and B->j)
+             // set V to A or B if valid, otherwise do not set V (A->j and B->k)
              // set 'issued' to the RS number for that station (this is different than the index and defined by RS_num_of
              // set 'error' to 'no_error'
            // repeat with 'else if' for station 2 and 3, with priority of 1, 2, 3
