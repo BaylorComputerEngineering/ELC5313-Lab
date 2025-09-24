@@ -1,4 +1,4 @@
-module adder_tb;
+module alu_tb;
 
     // Constants
     parameter clock_period = 10;
@@ -29,6 +29,27 @@ module adder_tb;
     wire available;
     wire [5:0] issued_to_rs_num, RS_available, RS_executing;
     wire error;
+
+    // Instantiate the adders module
+    alu my_alu (
+        .clock(clk),
+        .issue(issue_command),
+        .A(A), 
+        .B(B),
+        .A_invalid(A_invalid),
+        .B_invalid(B_invalid),
+        .opcode(command),
+        .CDB_xmit(CDB_xmit),
+        .CDB_data(data_out),
+        .CDB_source(data_from_rs_num),
+        .CDB_write(data_valid),
+        .CDB_rts(CDB_rts),
+        .available(available),
+        .RS_available(RS_available),
+        .issued(issued_to_rs_num),
+        .RS_executing(RS_executing),
+        .error(error)
+    );
 
     // Clock generation and stimulus
     initial begin
@@ -164,26 +185,5 @@ module adder_tb;
         #clock_period clk = ~clk;
         #clock_period clk = ~clk;
     end
-
-    // Instantiate the adders module
-    adder my_adders (
-        .clock(clk),
-        .issue(issue_command),
-        .A(A), 
-        .B(B),
-        .A_invalid(A_invalid),
-        .B_invalid(B_invalid),
-        .opcode(command),
-        .CDB_xmit(CDB_xmit),
-        .CDB_data(data_out),
-        .CDB_source(data_from_rs_num),
-        .CDB_write(data_valid),
-        .CDB_rts(CDB_rts),
-        .available(available),
-        .RS_available(RS_available),
-        .issued(issued_to_rs_num),
-        .RS_executing(RS_executing),
-        .error(error)
-    );
 
 endmodule
