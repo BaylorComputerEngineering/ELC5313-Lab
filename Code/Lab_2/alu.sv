@@ -101,8 +101,8 @@ module alu(
         CDB_source_out = no_rs;
         CDB_write_out = not_ready;
         Priority_Station = 0;
-	Second_Station = 1;
-	Last_Station = 2;
+	    Second_Station = 1;
+	    Last_Station = 2;
         Unit_Busy = not_busy;
         Busy[0] = not_busy;
         Busy[1] = not_busy;
