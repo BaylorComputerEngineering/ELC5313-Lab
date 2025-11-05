@@ -31,6 +31,7 @@ module registers(
 
    always@(negedge clock)
    begin
+		# 1
        if (issue)
        begin
           if (redirection[A_address]==not_redirected)
